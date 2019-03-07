@@ -1,0 +1,76 @@
+<div fxLayout="row wrap"
+     fxLayoutAlign="space-between center">
+  <mat-card *ngFor="let work of works; let index = index;"
+            (click)="openWorkInDialog(index);"
+            fxFlex="1 1 48"
+            fxFlex.xs="1 1 100">
+    <img matCardImage [src]="work.image">
+
+    <mat-card-content>
+      <mat-card-title>{{ work.title }}</mat-card-title>
+      <mat-card-subtitle>Subtitle</mat-card-subtitle>
+      <p>{{ work.description }}</p>
+      <mat-chip-list fxLayoutAlign="end center">
+        <mat-chip *ngFor="let category of work.categories"
+                  [title]="category.title">
+          <mat-icon>{{ category.icon }}</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<!-- CODE IFRAME TEMPLATE -->
+<ng-template #codeIframeTemplate>
+  <div class="dialog_header_container">
+    <button mat-fab
+            color="primary"
+            (click)="dialogRef.close()"
+            class="close_button">
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <button mat-fab
+            color="primary"
+            (click)="openWorkInDialog(selectedWorkIndex - 1)"
+            [disabled]="selectedWorkIndex - 1 < 0"
+            class="previous_work_button">
+      <mat-icon>arrow_left</mat-icon>
+    </button>
+
+    <button mat-fab
+            color="primary"
+            (click)="openWorkInDialog(selectedWorkIndex + 1)"
+            [disabled]="selectedWorkIndex + 1 >= works.length"
+            class="next_work_button">
+      <mat-icon>arrow_right</mat-icon>
+    </button>
+  </div>
+
+  <div fxLayoutAlign="center center"
+       class="spinner_container">
+    <mat-progress-spinner color="primary"
+                          mode="indeterminate"
+                          color="accent"
+                          *ngIf="iframeLoading">
+    </mat-progress-spinner>
+  </div>
+
+  <div class="dialog_iframe_container">
+    <div class="dialog_curtain"
+         *ngIf="iframeLoading">
+    </div>
+
+    <iframe scrolling="no"
+            frameborder="0"
+            id="player"
+            [src]="selectedWorkLink"
+            allowfullscreen="true"
+            width="100%"
+            height="100%">
+    </iframe>
+  </div>
+
+</ng-template>
+

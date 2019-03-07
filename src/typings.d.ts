@@ -1,0 +1,27 @@
+interface IAppConfig {
+  menu: {
+    hasBackdrop: boolean;
+    mode: string;
+    sections: IMenuSection[];
+  };
+}
+
+interface IMenuSection {
+  title: string;
+  link: string;
+  icon: string;
+}
+
+interface IWork {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  categories: IWorkCategory[];
+}
+
+interface IWorkCategory {
+  title: string;
+  icon: string;
+}

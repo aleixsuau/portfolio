@@ -1,0 +1,41 @@
+@import "../../../../../variables";
+
+::ng-deep .dialog_iframe {
+  width: 85vw;
+  height: 85vh;
+}
+
+::ng-deep .dialog_iframe .mat-dialog-container {
+  padding: 0px;
+}
+
+:host mat-card {
+  cursor: pointer;
+}
+
+.spinner_container ::ng-deep mat-progress-spinner {
+  position: absolute;
+  top: calc(50% - 50px);
+}
+
+.dialog_header_container {
+  position: relative;
+
+  .close_button {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+  }
+}
+
+.dialog_iframe_container {
+  overflow: hidden;
+  border-radius: 4px;
+  height: 100%;
+}
+
+.dialog_curtain {
+  width: 100%;
+  height: 100%;
+  background-color: $primary;
+}
