@@ -7,14 +7,6 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
-  {
-    path: 'portfolio',
-    loadChildren: '../features/portfolio/portfolio.module#PortfolioModule'
-  },
-  {
-    path: 'blog',
-    loadChildren: '../features/blog/blog.module#BlogModule'
-  }
 ];
 
 @NgModule({

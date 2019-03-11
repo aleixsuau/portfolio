@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -10,7 +10,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
+  @Input()
   works: IWork[];
+
   selectedWork: IWork;
   selectedWorkIndex = 0;
   selectedWorkLink: SafeResourceUrl;
@@ -27,14 +29,15 @@ export class PortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.works = this.activatedRoute.snapshot.data.works;
+    if (!this.works) {
+      this.works = this.activatedRoute.snapshot.data.works;
+    }
   }
 
   openWorkInDialog(index: number) {
-    console.log('openWork', index);
     this.selectedWorkIndex = index;
     this.selectedWork = {...this.works[index]};
-    let templateToShow;
+    let templateToShow = null;
 
     const isIframe = this.selectedWork.categories.find(category => category.title === 'code');
 
@@ -49,7 +52,7 @@ export class PortfolioComponent implements OnInit {
     }
 
     if (!this.dialogRef) {
-      this.dialogRef = this.dialog.open(templateToShow, {panelClass: 'dialog_iframe'});
+      this.dialogRef = this.dialog.open(templateToShow, {panelClass: 'dialog__iframe'});
 
       this.dialogRef.afterClosed().subscribe(() => this.dialogRef = null);
     }

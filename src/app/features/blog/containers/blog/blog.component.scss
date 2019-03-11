@@ -1,0 +1,52 @@
+:host {
+  ::ng-deep .medium-widget-article {
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+    cursor: pointer;
+
+    &__row {
+      margin: 0px;
+    }
+
+    &__item {
+      flex: 0 0 300px !important;
+      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      padding: 16px;
+      border-radius: 4px;
+      overflow: hidden;
+
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+
+    &__image {
+      margin-left: -1.3rem;
+      margin-right: -1.3rem;
+      margin-top: -1.3rem;
+      margin-bottom: 1rem;
+
+      img {
+        margin-right: 0px;
+      }
+    }
+
+    &__content a {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 24px;
+      font-weight: 500;
+      font-family: Roboto, "Helvetica Neue", sans-serif !important;
+    }
+
+    &__description {
+      display: block;
+      margin-bottom: 16px;
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 14px;
+    }
+
+    &__description p {
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.home_header {
+  height: 70vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url('../../../assets/img/code.jpg');
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  animation: appearFromTop 1s ease-out .5s;
+  animation-fill-mode: backwards;
+}
+
+.title, .subtitle {
+  animation: appearFromLeft 2s ease-out 1s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes appearFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes appearFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  80% {
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+

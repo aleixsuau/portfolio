@@ -1,8 +1,10 @@
-<div fxLayout="row wrap"
-     fxLayoutAlign="space-between center">
+<section fxLayout="row wrap"
+     fxLayoutAlign="start center"
+     fxLayoutGap="2em"
+     class="portfolio_container">
   <mat-card *ngFor="let work of works; let index = index;"
             (click)="openWorkInDialog(index);"
-            fxFlex="1 1 48"
+            fxFlex="1 1 300px"
             fxFlex.xs="1 1 100">
     <img matCardImage [src]="work.image">
 
@@ -18,24 +20,50 @@
       </mat-chip-list>
     </mat-card-content>
   </mat-card>
-</div>
+</section>
 
 
 <!-- CODE IFRAME TEMPLATE -->
 <ng-template #codeIframeTemplate>
-  <div class="dialog_header_container">
+  <div class="dialog__header_container">
     <button mat-fab
             color="primary"
             (click)="dialogRef.close()"
-            class="close_button">
+            class="dialog__close_button">
       <mat-icon>close</mat-icon>
     </button>
+  </div>
+
+  <div fxLayoutAlign="center center"
+       class="dialog__spinner_container">
+    <mat-progress-spinner mode="indeterminate"
+                          color="accent"
+                          *ngIf="iframeLoading">
+    </mat-progress-spinner>
+  </div>
+
+  <div class="dialog__iframe_container">
+    <div class="dialog__curtain"
+         *ngIf="iframeLoading">
+    </div>
+
+    <div class="dialog__iframe_wrapper"
+         *ngIf="selectedWorkLink">
+      <iframe scrolling="no"
+              frameborder="0"
+              id="player"
+              [src]="selectedWorkLink"
+              allowfullscreen="true"
+              width="100%"
+              height="100%">
+      </iframe>
+    </div>
 
     <button mat-fab
             color="primary"
             (click)="openWorkInDialog(selectedWorkIndex - 1)"
             [disabled]="selectedWorkIndex - 1 < 0"
-            class="previous_work_button">
+            class="dialog__work_button--previous">
       <mat-icon>arrow_left</mat-icon>
     </button>
 
@@ -43,34 +71,9 @@
             color="primary"
             (click)="openWorkInDialog(selectedWorkIndex + 1)"
             [disabled]="selectedWorkIndex + 1 >= works.length"
-            class="next_work_button">
+            class="dialog__work_button--next">
       <mat-icon>arrow_right</mat-icon>
     </button>
   </div>
 
-  <div fxLayoutAlign="center center"
-       class="spinner_container">
-    <mat-progress-spinner color="primary"
-                          mode="indeterminate"
-                          color="accent"
-                          *ngIf="iframeLoading">
-    </mat-progress-spinner>
-  </div>
-
-  <div class="dialog_iframe_container">
-    <div class="dialog_curtain"
-         *ngIf="iframeLoading">
-    </div>
-
-    <iframe scrolling="no"
-            frameborder="0"
-            id="player"
-            [src]="selectedWorkLink"
-            allowfullscreen="true"
-            width="100%"
-            height="100%">
-    </iframe>
-  </div>
-
 </ng-template>
-

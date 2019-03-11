@@ -2,6 +2,7 @@ import { BaseComponent } from './core/components/base/base.component';
 import { ConfigResolverService } from './core/resolvers/config/config.resolver';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ContentResolverService } from './core/resolvers/content/content.resolver';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: BaseComponent,
     resolve: {
       config: ConfigResolverService,
+      content: ContentResolverService,
     },
     children: [
       {

@@ -4,7 +4,7 @@ import { PortfolioComponent } from './containers/portfolio/portfolio.component';
 import { PortfolioResolverService } from './services/portfolio/portfolio.resolver';
 
 const routes: Routes = [{
-  path: '',
+  path: 'portfolio',
   component: PortfolioComponent,
   resolve: {
     works: PortfolioResolverService,

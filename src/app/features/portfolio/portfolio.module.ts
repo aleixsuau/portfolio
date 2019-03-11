@@ -16,6 +16,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   providers: [
     PortfolioResolverService,
+  ],
+  exports: [
+    PortfolioComponent,
   ]
 })
 export class PortfolioModule { }

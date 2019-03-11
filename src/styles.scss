@@ -28,5 +28,32 @@ $portfolio-theme: mat-light-theme($portfolio-primary, $portfolio-accent, $portfo
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+html {
+  // This defines what a rem is
+  height: 100%;
+  margin: 0;
+  font-size: 80%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@font-face{
+  font-family: Lora;
+  src: 'https://fonts.googleapis.com/css?family=Lora';
+}
+
+.heading--with_background {
+  background-image: url('./assets/img/code.jpg');
+  background-clip: text;
+  color: transparent;
+  font-size: 5rem;
+}

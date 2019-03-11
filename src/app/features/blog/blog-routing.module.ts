@@ -4,7 +4,7 @@ import { BlogComponent } from './containers/blog/blog.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'blog',
     component: BlogComponent,
   }
 ];

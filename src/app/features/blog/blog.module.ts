@@ -14,6 +14,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     BlogRoutingModule,
     MediumWidgetModule,
+  ],
+  exports: [
+    BlogComponent,
+    MediumWidgetModule,
   ]
 })
 export class BlogModule { }
