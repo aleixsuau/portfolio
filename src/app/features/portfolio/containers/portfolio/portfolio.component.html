@@ -10,8 +10,7 @@
 
     <mat-card-content>
       <mat-card-title>{{ work.title }}</mat-card-title>
-      <mat-card-subtitle>Subtitle</mat-card-subtitle>
-      <p>{{ work.description }}</p>
+      <mat-card-subtitle>{{ work.description }}</mat-card-subtitle>
       <mat-chip-list fxLayoutAlign="end center">
         <mat-chip *ngFor="let category of work.categories"
                   [title]="category.title">

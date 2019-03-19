@@ -35,9 +35,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.works = this.activatedRoute.snapshot.data.content;
     this.sectionsSubscription = this.configService.$config.subscribe(config => this.sections = config.menu.sections);
 
-    // Set background color
+    // Set background height & color
     const colors = this.sections.map(section => section.background_color).join(' ,');
     this.homeBackgroundColor.nativeElement.style.backgroundImage = `linear-gradient(to bottom, ${colors})`;
+    this.homeBackgroundColor.nativeElement.style.height = `${((this.sections.length *
+                                                            this.sectionHeightScreenPercentage) +
+                                                            this.voidSpaceHeightScreenPercentage) *
+                                                            100}vh`;
 
     this.scrollDispatcher
           .ancestorScrolled(this.elementRef, 50)
@@ -50,10 +54,16 @@ export class HomeComponent implements OnInit, OnDestroy {
             const sectionHeight = clientHeight * this.sectionHeightScreenPercentage;
             const voidSpaceHeight = clientHeight * this.voidSpaceHeightScreenPercentage;
             const clientMiddlePoint = scrollTop + (clientHeight / 2);
-            // tslint:disable-next-line:max-line-length
-            this.titleBackgroundContainer.nativeElement.style.transform = `translateX(-${((clientMiddlePoint - voidSpaceHeight) / sectionHeight) * 100}%)`;
-            // tslint:disable-next-line:max-line-length
-            const currentSection = clientMiddlePoint > voidSpaceHeight ? Math.ceil((clientMiddlePoint - voidSpaceHeight) / sectionHeight) : 0;
+            const percentageToTranslateBackgrounTitle = ((clientMiddlePoint - voidSpaceHeight) / sectionHeight) * 100;
+            this.titleBackgroundContainer.nativeElement.style.transform = `translateX(-${
+                                                                            // Fix scroll throttle vagueness
+                                                                            percentageToTranslateBackgrounTitle < -5 ?
+                                                                              0 :
+                                                                              percentageToTranslateBackgrounTitle
+                                                                          }%)`;
+            const currentSection = clientMiddlePoint > voidSpaceHeight ?
+                                    Math.ceil((clientMiddlePoint - voidSpaceHeight) / sectionHeight) :
+                                    0;
 
             if (this.activeSection !== currentSection) {
               this.activeSection = currentSection;

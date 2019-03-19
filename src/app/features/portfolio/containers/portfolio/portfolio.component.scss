@@ -12,10 +12,22 @@
 }
 
 :host {
-  mat-card {
+  .mat-card {
     cursor: pointer;
     background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
     opacity: 0.9;
+  }
+
+  .mat-card-title {
+    color: $white;
+    line-height: 2.4rem;
+  }
+
+  .mat-card-subtitle {
+    color: $lighter-grey;
+    font-size: 1.4rem;
+    margin-bottom: 1.6rem;
+    margin-top: 0.5rem;
   }
 
   .portfolio_container {

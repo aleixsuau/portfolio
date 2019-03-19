@@ -2,7 +2,6 @@
 
 .home {
   &__bgcolor {
-    height: 390vh;
     width: 100vw;
     position: absolute;
     z-index: -2;
@@ -30,6 +29,7 @@
   background-size: cover;
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  -webkit-transform-style: preserve-3d;
   animation: appearFromTop 1s ease-out .5s;
   animation-fill-mode: backwards;
 
@@ -48,7 +48,7 @@
 
   h1 {
     margin: 0;
-    color: white;
+    color: $white;
     text-transform: uppercase;
   }
 }
