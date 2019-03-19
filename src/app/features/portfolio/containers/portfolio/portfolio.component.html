@@ -1,10 +1,10 @@
-<section fxLayout="row wrap"
-     fxLayoutAlign="start center"
-     fxLayoutGap="2em"
-     class="portfolio_container">
+<section fxLayout="row"
+          fxLayoutAlign="start end"
+          fxLayoutGap="2em"
+          class="portfolio_container">
   <mat-card *ngFor="let work of works; let index = index;"
             (click)="openWorkInDialog(index);"
-            fxFlex="1 1 300px"
+            fxFlex="1 1 30rem"
             fxFlex.xs="1 1 100">
     <img matCardImage [src]="work.image">
 

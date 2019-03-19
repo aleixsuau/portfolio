@@ -3,8 +3,8 @@ mat-sidenav-container {
 }
 
 .menu_button {
-  position: absolute;
-  top: 30px;
-  left: 30px;
+  position: fixed;
+  top: 3rem;
+  left: 3rem;
   z-index: 10;
 }

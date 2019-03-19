@@ -1,21 +1,41 @@
+@import '../../../../../variables';
+
 :host {
+  .medium_widget_container {
+    height: 52rem;
+    padding: 3rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  ::ng-deep #medium-widget section {
+    height: 40.8rem;
+  }
+
   ::ng-deep .medium-widget-article {
     font-family: Roboto, "Helvetica Neue", sans-serif !important;
     cursor: pointer;
 
     &__row {
-      margin: 0px;
+      margin: 0rem;
     }
 
     &__item {
-      flex: 0 0 300px !important;
+      flex: 0 0 30rem !important;
       box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-      padding: 16px;
-      border-radius: 4px;
+      border-radius: 0.4rem;
+      padding: 0 !important;
       overflow: hidden;
+      cursor: pointer;
+      background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
+      opacity: 0.9;
 
       &:not(:last-child) {
         margin-right: 2rem;
+      }
+
+      &:last-child {
+        margin-right: 4rem;
       }
     }
 
@@ -23,30 +43,46 @@
       margin-left: -1.3rem;
       margin-right: -1.3rem;
       margin-top: -1.3rem;
-      margin-bottom: 1rem;
 
       img {
-        margin-right: 0px;
+        margin-right: 0rem;
       }
     }
 
-    &__content a {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 24px;
-      font-weight: 500;
-      font-family: Roboto, "Helvetica Neue", sans-serif !important;
+    &__content {
+      padding: 1.6rem;
+
+      a {
+        display: block;
+        margin-bottom: 0.8rem;
+        font-size: 2.4rem;
+        font-weight: 500;
+        font-family: Roboto, "Helvetica Neue", sans-serif !important;
+        line-height: 2.4rem;
+      }
+    }
+
+    &__title {
+      color: $white !important;
     }
 
     &__description {
       display: block;
-      margin-bottom: 16px;
-      color: rgba(0, 0, 0, 0.54);
-      font-size: 14px;
+      margin-bottom: 1.6rem;
+      color: $lighter-grey;
+      font-size: 1.4rem;
     }
 
     &__description p {
-      font-size: 14px;
+      font-size: 1.4rem;
+    }
+
+    &__author-name, &__clap {
+      color: $lighter-grey;
+    }
+
+    &__clap::before {
+      filter: invert(1);
     }
   }
 }

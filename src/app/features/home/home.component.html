@@ -1,13 +1,61 @@
-<div class="home_header"
-     fxLayoutAlign="center center">
-     <div fxFlex="0 0 auto"
-          style="text-align: center;"
-          class="heading--with_background">
-       <h1 class="title">Aleix Suau</h1>
-       <h2 class="subtitle">Code Crafter</h2>
-     </div>
+<div class="home__container">
+  <div class="home__bgcolor" #homeBackgroundColor></div>
+
+  <div class="title_background">
+    <div class="title_background__container"
+         fxLayoutAlign="start center"
+         #titleBackgroundContainer>
+      <div class="title_background__title"
+           fxFlex="0 0 100vw"
+           *ngFor="let section of sections">
+        <h1>{{ section.title }}</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="title">
+    <ng-container *ngFor="let section of sections; let index = index;">
+      <div *ngIf="index && index === activeSection -1"
+           class="title__wrapper">
+        <h1>{{ section.title }}</h1>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- PROFILES SECTION -->
+  <section fxLayout="column"
+           fxLayoutAlign="end center"
+           class="profile">
+    <h3 fxFlex="0 0 auto" style="color: white;
+              font-size: 2rem;
+              border: 2px solid #2a2a2a;
+              padding: 5px 10px;">
+      I'm Aleix, frontend developer
+    </h3>
+
+    <div class="profile__logos_container"
+         fxFlex="0 0 auto"
+         fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <img src="../../../assets/img/linkedIn_logo.svg"
+           class="profile__logo">
+      <img src="../../../assets/img/github_logo.svg"
+           class="profile__logo">
+      <img src="../../../assets/img/code_logo.svg"
+           class="profile__logo">
+      <img src="../../../assets/img/medium_logo.svg"
+           class="profile__logo">
+      <img src="../../../assets/img/twitter_logo.svg"
+           class="profile__logo">
+    </div>
+  </section>
+
+
+  <app-portfolio [works]="works"></app-portfolio>
+
+  <app-blog></app-blog>
+
+  <app-portfolio [works]="works"></app-portfolio>
+
+  <div style="padding-bottom: 60vh;" class="void_space"></div>
 </div>
-
-<app-portfolio [works]="works"></app-portfolio>
-
-<app-blog></app-blog>

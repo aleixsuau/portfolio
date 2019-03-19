@@ -7,17 +7,21 @@
   }
 
   &__iframe .mat-dialog-container {
-    padding: 0px;
+    padding: 0rem;
   }
 }
 
 :host {
   mat-card {
     cursor: pointer;
+    background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
+    opacity: 0.9;
   }
 
   .portfolio_container {
     padding: 3rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }
 
@@ -26,7 +30,7 @@
 .dialog {
   &__spinner_container ::ng-deep mat-progress-spinner {
     position: absolute;
-    top: calc(50% - 50px);
+    top: calc(50% - 5rem);
     z-index: 10;
   }
 
@@ -36,8 +40,8 @@
 
   &__close_button {
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: -3rem;
+    right: -3rem;
     z-index: 1;
   }
 
@@ -48,7 +52,7 @@
 
   &__iframe_wrapper {
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     height: 100%;
   }
 

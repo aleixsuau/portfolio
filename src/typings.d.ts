@@ -10,6 +10,7 @@ interface IMenuSection {
   title: string;
   link: string;
   icon: string;
+  background_color: string;
 }
 
 interface IWork {

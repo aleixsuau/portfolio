@@ -14,7 +14,6 @@
 // hue. Available color palettes: https://material.io/design/color/
 $portfolio-primary: mat-palette($mat-indigo);
 $portfolio-accent: mat-palette($mat-pink, A200, A100, A400);
-
 // The warn palette is optional (defaults to red).
 $portfolio-warn: mat-palette($mat-red);
 
@@ -28,6 +27,7 @@ $portfolio-theme: mat-light-theme($portfolio-primary, $portfolio-accent, $portfo
 
 /* You can add global styles to this file, and also import other style files */
 
+
 *, *::after, *::before {
   box-sizing: inherit;
 }
@@ -36,7 +36,7 @@ html {
   // This defines what a rem is
   height: 100%;
   margin: 0;
-  font-size: 80%;
+  font-size: 62.5%;
 }
 
 body {
@@ -49,11 +49,4 @@ body {
 @font-face{
   font-family: Lora;
   src: 'https://fonts.googleapis.com/css?family=Lora';
-}
-
-.heading--with_background {
-  background-image: url('./assets/img/code.jpg');
-  background-clip: text;
-  color: transparent;
-  font-size: 5rem;
 }
