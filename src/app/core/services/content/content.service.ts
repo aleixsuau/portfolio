@@ -14,7 +14,7 @@ export class ContentService {
         title: 'Work 1',
         description: 'This is work 1',
         image: '/assets/img/ngx-medium-widget.png',
-        link: 'https://stackblitz.com/edit/ngx-medium-posts-widget?embed=1&file=src/app/ngx-medium-widget/component/medium-widget/medium-widget.component.ts&hideExplorer=1&hideNavigation=1&view=editor',
+        link: 'https://stackblitz.com/edit/ngx-medium-posts-widget?embed=1&file=src/app/ngx-medium-widget/component/medium-widget/medium-widget.component.ts',
         categories: [
           {
             title: 'code',
@@ -40,7 +40,7 @@ export class ContentService {
         title: 'Work 1',
         description: 'This is work 1',
         image: '/assets/img/ngx-medium-widget.png',
-        link: 'https://stackblitz.com/edit/ngx-medium-posts-widget?embed=1&file=src/app/ngx-medium-widget/component/medium-widget/medium-widget.component.ts&hideExplorer=1&hideNavigation=1&view=editor',
+        link: 'https://stackblitz.com/edit/ngx-medium-posts-widget?embed=1&file=src/app/ngx-medium-widget/component/medium-widget/medium-widget.component.ts',
         categories: [
           {
             title: 'code',
@@ -66,7 +66,7 @@ export class ContentService {
         title: 'Work 1',
         description: 'This is work 1',
         image: '/assets/img/ngx-medium-widget.png',
-        link: 'https://stackblitz.com/edit/ngx-medium-posts-widget?embed=1&file=src/app/ngx-medium-widget/component/medium-widget/medium-widget.component.ts&hideExplorer=1&hideNavigation=1&view=editor',
+        link: 'https://stackblitz.com/edit/ngx-medium-posts-widget?embed=1&file=src/app/ngx-medium-widget/component/medium-widget/medium-widget.component.ts',
         categories: [
           {
             title: 'code',

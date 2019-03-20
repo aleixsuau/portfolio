@@ -1,24 +1,33 @@
-<section fxLayout="row"
-          fxLayoutAlign="start end"
-          fxLayoutGap="2em"
-          class="portfolio_container">
-  <mat-card *ngFor="let work of works; let index = index;"
-            (click)="openWorkInDialog(index);"
-            fxFlex="1 1 30rem"
-            fxFlex.xs="1 1 100">
-    <img matCardImage [src]="work.image">
+<section>
+  <div class="counter">
+    <h3>{{ works.length }}</h3>
+  </div>
 
-    <mat-card-content>
-      <mat-card-title>{{ work.title }}</mat-card-title>
-      <mat-card-subtitle>{{ work.description }}</mat-card-subtitle>
-      <mat-chip-list fxLayoutAlign="end center">
-        <mat-chip *ngFor="let category of work.categories"
-                  [title]="category.title">
-          <mat-icon>{{ category.icon }}</mat-icon>
-        </mat-chip>
-      </mat-chip-list>
-    </mat-card-content>
-  </mat-card>
+  <div class="portfolio_container"
+       fxLayout="row"
+       fxLayoutAlign="start end"
+       fxLayoutGap="2em">
+    <mat-card *ngFor="let work of works; let index = index;"
+              (click)="openWorkInDialog(index);"
+              fxFlex="1 1 30rem">
+      <img matCardImage [src]="work.image">
+
+      <mat-card-content fxLayout="column"
+                        fxLayoutAlign="space-between start"
+                        [style.height.rem]="18">
+        <mat-card-title fxFlex="0 0 0%">{{ work.title }}</mat-card-title>
+        <mat-card-subtitle fxFlex="1 1 auto">{{ work.description }}</mat-card-subtitle>
+        <mat-chip-list fxFlex="0 0 auto"
+                      fxLayoutAlign="end center"
+                      [style.width.%]="100">
+          <mat-chip *ngFor="let category of work.categories"
+                    [title]="category.title">
+            <mat-icon>{{ category.icon }}</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </section>
 
 

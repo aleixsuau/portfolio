@@ -12,10 +12,33 @@
 }
 
 :host {
+  section {
+    position: relative;
+  }
+
+  .counter {
+    position: absolute;
+    top: calc(90vh - 55rem);
+    right: 0;
+    height: 5rem;
+    width: 3rem;
+    line-height: 5rem;
+    padding-left: 1rem;
+    background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
+    border-radius: 10rem 0rem 0rem 10rem;
+    color: $lighter-grey;
+
+    h3 {
+      margin: 0;
+      font-size: 2rem;
+    }
+  }
+
   .mat-card {
     cursor: pointer;
     background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
     opacity: 0.9;
+    height: 45rem;
   }
 
   .mat-card-title {
@@ -31,6 +54,7 @@
   }
 
   .portfolio_container {
+    height: 100%;
     padding: 3rem;
     overflow-x: scroll;
     overflow-y: hidden;

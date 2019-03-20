@@ -1,11 +1,33 @@
 @import '../../../../../variables';
 
 :host {
+  section {
+    position: relative;
+  }
+
   .medium_widget_container {
     height: 52rem;
     padding: 3rem;
     overflow-x: scroll;
     overflow-y: hidden;
+  }
+
+  .counter {
+    position: absolute;
+    top: calc(90vh - 55rem);
+    right: 0;
+    height: 5rem;
+    width: 3rem;
+    line-height: 5rem;
+    padding-left: 1rem;
+    background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
+    border-radius: 10rem 0rem 0rem 10rem;
+    color: $lighter-grey;
+
+    h3 {
+      margin: 0;
+      font-size: 2rem;
+    }
   }
 
   ::ng-deep #medium-widget section {

@@ -54,15 +54,15 @@ export class HomeComponent implements OnInit, OnDestroy {
             const sectionHeight = clientHeight * this.sectionHeightScreenPercentage;
             const voidSpaceHeight = clientHeight * this.voidSpaceHeightScreenPercentage;
             const clientMiddlePoint = scrollTop + (clientHeight / 2);
-            const percentageToTranslateBackgrounTitle = ((clientMiddlePoint - voidSpaceHeight) / sectionHeight) * 100;
+            const percentageToTranslateBackgrounTitle = Math.round(((clientMiddlePoint - voidSpaceHeight) / sectionHeight) * 1000) / 10;
             this.titleBackgroundContainer.nativeElement.style.transform = `translateX(-${
                                                                             // Fix scroll throttle vagueness
                                                                             percentageToTranslateBackgrounTitle < -5 ?
                                                                               0 :
                                                                               percentageToTranslateBackgrounTitle
                                                                           }%)`;
-            const currentSection = clientMiddlePoint > voidSpaceHeight ?
-                                    Math.ceil((clientMiddlePoint - voidSpaceHeight) / sectionHeight) :
+            const currentSection = scrollTop > sectionHeight ?
+                                    Math.floor(scrollTop / sectionHeight) :
                                     0;
 
             if (this.activeSection !== currentSection) {
