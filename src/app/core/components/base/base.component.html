@@ -13,14 +13,37 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <!-- TODO: CHANGE LINKS TO IDs & TRANSLATEX BUTTON WHEN IS OPEN -->
-    <!-- <button mat-fab
-            (click)="sideMenu.toggle()"
-            class="menu_button">
-      <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
-      <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
-    </button> -->
+    <div class="app_container">
+      <div class="header"
+          fxFlexLayout>
+        <div class="header__background">
+        </div>
 
-    <router-outlet></router-outlet>
+        <div class="menu_button"
+            (click)="sideMenu.toggle()"
+            [ngClass]="{'open': sideMenu.opened}"
+            fxFlex="0 0 10rem">
+          <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
+          <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
+        </div>
+
+        <div class="menu_container"
+            fxFlex="1 1 auto">
+        </div>
+      </div>
+      <!-- TODO: CHANGE LINKS TO IDs & TRANSLATEX BUTTON WHEN IS OPEN -->
+      <!-- <button mat-fab
+              (click)="sideMenu.toggle()"
+              [ngClass]="{'open': sideMenu.opened}"
+              class="menu_button">
+        <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
+        <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
+      </button> -->
+
+      <div class="hole_border" [ngClass]="{'open': sideMenu.opened}"></div>
+
+
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

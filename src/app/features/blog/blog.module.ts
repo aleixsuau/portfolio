@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './containers/blog/blog.component';
 import { MediumWidgetModule } from 'ngx-medium-widget';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
