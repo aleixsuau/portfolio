@@ -30,5 +30,16 @@
       </mat-error>
     </mat-form-field>
   </div>
+
+  <div class="contact__button"
+       fxFlex="1 1 100%"
+       fxLayoutAlign="center end">
+    <button mat-fab
+            (click)="sendMessage(contactForm.value);"
+            [disabled]="contactForm.invalid"
+            [style.backgroundColor]="contactForm.valid ? (buttonColor$ | async) : null">
+      <mat-icon class="mat-18">send</mat-icon>
+    </button>
+  </div>
 </section>
 

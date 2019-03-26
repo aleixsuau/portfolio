@@ -1,7 +1,7 @@
 <div class="home__container" id="home">
   <div class="home__bgcolor" #homeBackgroundColor></div>
 
-  <div class="title_background">
+  <div class="title_background" #homeBackgroundTitle>
     <div class="title_background__container"
          fxLayoutAlign="start center"
          #titleBackgroundContainer>
@@ -47,5 +47,5 @@
 
   <app-contact></app-contact>
 
-  <div [style.paddingBottom]="voidSpaceVH * 100 + 'vh'" class="void_space"></div>
+  <div [style.paddingBottom]="voidSpaceHeightScreenPercentage * 100 + 'vh'" class="void_space"></div>
 </div>

@@ -33,16 +33,8 @@
         <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
       </div>
 
-      <h2>{{ (activeSection$ | async)?.title }}</h2>
+      <h2 *ngIf="(activeSection$ | async)?.id !== 'home'">{{ (activeSection$ | async)?.title }}</h2>
     </div>
-    <!-- TODO: CHANGE LINKS TO IDs & TRANSLATEX BUTTON WHEN IS OPEN -->
-    <!-- <button mat-fab
-            (click)="sideMenu.toggle()"
-            [ngClass]="{'open': sideMenu.opened}"
-            class="menu_button">
-      <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
-      <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
-    </button> -->
 
     <div class="hole_border" [ngClass]="{'open': sideMenu.opened}"></div>
 

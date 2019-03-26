@@ -16,13 +16,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   sections: IMenuSection[];
   sectionsSubscription: Subscription;
   sectionHeightScreenPercentage = 0.9;
-  voidSpaceHeightScreenPercentage = 0.4;
+  voidSpaceHeightScreenPercentage = 0.3;
   activeSection: number;
 
-  @ViewChild('titleBackgroundContainer')
-  titleBackgroundContainer: ElementRef;
   @ViewChild('homeBackgroundColor')
   homeBackgroundColor: ElementRef;
+  @ViewChild('homeBackgroundTitle')
+  homeBackgroundTitle: ElementRef;
+  @ViewChild('titleBackgroundContainer')
+  titleBackgroundContainer: ElementRef;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -60,17 +62,26 @@ export class HomeComponent implements OnInit, OnDestroy {
             const sectionHeight = clientHeight * this.sectionHeightScreenPercentage;
             const scrolledPercentage = Math.round((scrollTop / (scrollHeight - clientHeight)) * 1000) / 10 ;
             const percentageToTranslateBackgrounTitle = scrolledPercentage * (this.sections.length - 1);
+            const lastSection = this.sections.length - 1;
+            const currentSection = scrollTop > sectionHeight ?
+                                    Math.floor(scrollTop / sectionHeight) :
+                                    0;
+
             this.titleBackgroundContainer.nativeElement.style.transform = `translateX(-${
                                                                             // Fix scroll throttle vagueness
                                                                             percentageToTranslateBackgrounTitle < -5 ?
                                                                               0 :
                                                                               percentageToTranslateBackgrounTitle
                                                                           }%)`;
-            const currentSection = scrollTop > sectionHeight ?
-                                    Math.floor(scrollTop / sectionHeight) :
-                                    0;
+
+            if (currentSection === lastSection) {
+              this.homeBackgroundTitle.nativeElement.style.top = `-60vh`;
+            }
 
             if (this.activeSection !== currentSection) {
+              if (this.activeSection === lastSection) {
+                this.homeBackgroundTitle.nativeElement.style.top = 0;
+              }
               // To avoid performance issues, ancestorScrolled is runOutsideAngular
               // Here we call ngZone to trigger change detection and refresh views
               this.ngZone.run(() => {

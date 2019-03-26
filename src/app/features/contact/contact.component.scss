@@ -1,15 +1,52 @@
 @import "../../../variables";
 
-.contact {
-  &__input {
-    &:last-child {
-      margin-top: 3rem;
+:host {
+  ::ng-deep {
+    .mat-fab {
+      width: 12.5rem !important;
+      height: 12.5rem !important;
+      opacity: 0.8;
+      margin-top: 2rem;
     }
 
-    ::ng-deep .mat-form-field {
-      width: 100%;
-      font-size: 3rem;
-      color: $white;
+    .mat-icon {
+      height: 6rem !important;
+      width: 5rem !important;
+    }
+
+    .material-icons {
+      font-size: 6rem !important;
+    }
+  }
+
+  .contact {
+    &__input {
+      &:last-child {
+        margin-top: 3rem;
+      }
+
+      ::ng-deep .mat-form-field {
+        width: 100%;
+        font-size: 3rem;
+        color: $white;
+
+        label {
+          color: $white;
+        }
+
+        .mat-error {
+          background-image: linear-gradient(to right, $light-pink, $dark-pink);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .mat-form-field-underline, .mat-form-field-ripple {
+          background-color: $white !important;
+          height: 0.3rem;
+        }
+      }
     }
   }
 }
+
+

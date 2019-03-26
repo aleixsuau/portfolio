@@ -63,8 +63,7 @@ mat-sidenav-container {
   top: 1.9rem;
   left: 1.9rem;
   border-radius: 50%;
-  border: 2px solid #3f3f3f;
-  box-shadow: inset 0px 0px 1px rgba(10, 10, 10, 0.77);
+  border: 0.2rem solid #3f3f3f;
   animation: fadeIn .1s ease-out 1.5s;
   animation-fill-mode: backwards;
   transition-duration: .4s;
@@ -72,7 +71,7 @@ mat-sidenav-container {
 }
 
 .hole_border.open, .menu_button.open {
-  margin-left: 135px;
+  margin-left: 15.2rem;
 }
 
 @keyframes fadeIn {

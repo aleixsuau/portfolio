@@ -29,3 +29,8 @@ interface IWorkCategory {
   title: string;
   icon: string;
 }
+
+interface IMessage {
+  email: string;
+  message: string;
+}

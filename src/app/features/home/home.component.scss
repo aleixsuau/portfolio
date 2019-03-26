@@ -22,6 +22,7 @@
 
 .title_background {
   position: fixed;
+  top: 0;
   height: 80vh;
   width: 100%;
   z-index: -1;
@@ -33,6 +34,7 @@
   animation: appearFromTop 1s ease-out .5s;
   animation-fill-mode: backwards;
   mask-image: radial-gradient(circle at 5rem 5rem, transparent 3rem, rgb(0, 0, 0) 3rem);
+  transition: all ease-in 0.4s;
 
   &__container {
     height: 100%;
