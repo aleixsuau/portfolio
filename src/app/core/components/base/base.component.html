@@ -1,49 +1,51 @@
-<mat-sidenav-container [hasBackdrop]="config?.menu?.hasBackdrop"
+<mat-sidenav-container [hasBackdrop]="(menu$ | async)?.hasBackdrop"
                        CdkScrollable>
   <mat-sidenav #sideMenu
-               [mode]="config?.menu?.mode">
+               [mode]="(menu$ | async)?.mode">
     <mat-nav-list>
       <a mat-list-item
-         *ngFor="let section of config?.menu?.sections"
-         [routerLink]="section.link">
-        <mat-icon matListIcon>{{ section.icon }}</mat-icon>
-        <h3 matLine> {{ section.title | uppercase }} </h3>
+         *ngFor="let section of (menu$ | async)?.sections"
+         [href]="'/#' + section.link"
+         [ngClass]="{'active': section.id === (activeSection$ | async)?.id}">
+        <mat-icon matListIcon [style.color]="section.id === (activeSection$ | async)?.id ?
+                                              section.background_color : null">
+          {{ section.icon }}
+        </mat-icon>
+        <h3 matLine [style.color]="section.id === (activeSection$ | async)?.id ?
+                                    section.background_color : null">
+          {{ section.title | uppercase }}
+        </h3>
       </a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div class="app_container">
-      <div class="header"
-          fxFlexLayout>
-        <div class="header__background">
-        </div>
-
-        <div class="menu_button"
-            (click)="sideMenu.toggle()"
-            [ngClass]="{'open': sideMenu.opened}"
-            fxFlex="0 0 10rem">
-          <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
-          <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
-        </div>
-
-        <div class="menu_container"
-            fxFlex="1 1 auto">
-        </div>
+    <div class="header"
+        fxFlexLayout>
+      <div class="header__background">
       </div>
-      <!-- TODO: CHANGE LINKS TO IDs & TRANSLATEX BUTTON WHEN IS OPEN -->
-      <!-- <button mat-fab
-              (click)="sideMenu.toggle()"
-              [ngClass]="{'open': sideMenu.opened}"
-              class="menu_button">
+
+      <div class="menu_button"
+          (click)="sideMenu.toggle()"
+          [ngClass]="{'open': sideMenu.opened}"
+          fxFlex="0 0 10rem">
         <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
         <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
-      </button> -->
+      </div>
 
-      <div class="hole_border" [ngClass]="{'open': sideMenu.opened}"></div>
-
-
-      <router-outlet></router-outlet>
+      <h2>{{ (activeSection$ | async)?.title }}</h2>
     </div>
+    <!-- TODO: CHANGE LINKS TO IDs & TRANSLATEX BUTTON WHEN IS OPEN -->
+    <!-- <button mat-fab
+            (click)="sideMenu.toggle()"
+            [ngClass]="{'open': sideMenu.opened}"
+            class="menu_button">
+      <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
+      <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
+    </button> -->
+
+    <div class="hole_border" [ngClass]="{'open': sideMenu.opened}"></div>
+
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,4 +1,4 @@
-<div class="home__container">
+<div class="home__container" id="home">
   <div class="home__bgcolor" #homeBackgroundColor></div>
 
   <div class="title_background">
@@ -11,15 +11,6 @@
         <h1>{{ section.title }}</h1>
       </div>
     </div>
-  </div>
-
-  <div class="title">
-    <ng-container *ngFor="let section of sections; let index = index;">
-      <div *ngIf="index && index === activeSection"
-           class="title__wrapper">
-        <h1>{{ section.title }}</h1>
-      </div>
-    </ng-container>
   </div>
 
   <!-- PROFILES SECTION -->
@@ -50,12 +41,11 @@
     </div>
   </section>
 
-
   <app-portfolio [works]="works"></app-portfolio>
 
   <app-blog></app-blog>
 
-  <app-portfolio [works]="works"></app-portfolio>
+  <app-contact></app-contact>
 
-  <div style="padding-bottom: 60vh;" class="void_space"></div>
+  <div [style.paddingBottom]="voidSpaceVH * 100 + 'vh'" class="void_space"></div>
 </div>

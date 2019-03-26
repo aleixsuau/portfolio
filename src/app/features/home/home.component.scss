@@ -42,20 +42,6 @@
   }
 }
 
-.title {
-  position: fixed;
-  top: 3.2rem;
-  left: 10rem;
-  z-index: 11;
-
-  h1 {
-    margin: 0;
-    color: $white;
-    text-transform: uppercase;
-    font-size: 3rem;
-  }
-}
-
 ::ng-deep section {
   height: 90vh;
 }

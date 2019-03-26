@@ -6,6 +6,7 @@ import { BaseComponent } from './components/base/base.component';
 import { SharedModule } from '../shared/shared.module';
 import { ContentService } from './services/content/content.service';
 import { ContentResolverService } from './resolvers/content/content.resolver';
+import { MenuService } from './services/menu/menu.service';
 
 @NgModule({
   declarations: [BaseComponent],
@@ -18,6 +19,7 @@ import { ContentResolverService } from './resolvers/content/content.resolver';
     ConfigResolverService,
     ContentService,
     ContentResolverService,
+    MenuService,
   ]
 })
 export class CoreModule { }

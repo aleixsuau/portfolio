@@ -1,6 +1,7 @@
+import { MenuService } from './../../core/services/menu/menu.service';
 import { ConfigService } from './../../core/services/config/config.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/overlay';
 import { Subscription } from 'rxjs';
 
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   sections: IMenuSection[];
   sectionsSubscription: Subscription;
   sectionHeightScreenPercentage = 0.9;
-  voidSpaceHeightScreenPercentage = 0.6;
+  voidSpaceHeightScreenPercentage = 0.4;
   activeSection: number;
 
   @ViewChild('titleBackgroundContainer')
@@ -28,7 +29,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private configService: ConfigService,
     private scrollDispatcher: ScrollDispatcher,
     private elementRef: ElementRef,
-    private changeDetectorRef: ChangeDetectorRef,
+    private menuService: MenuService,
+    private ngZone: NgZone,
   ) { }
 
   ngOnInit() {
@@ -46,15 +48,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.scrollDispatcher
           .ancestorScrolled(this.elementRef, 50)
           .subscribe((cdkScrollable: CdkScrollable) => {
-            const scrollTop = cdkScrollable.measureScrollOffset('top');
+            // We add 1 pixel to scrollTop to cover the case where the scroll
+            // comes from a click on an anchor (ie: #blog). In these cases
+            // the scroll goes right to the pixel before the <section> starts
+            // so it doesn't get activated (activeSection). Adding 1 pixels solves this.
+            const scrollTop = cdkScrollable.measureScrollOffset('top') + 1;
             const clientHeight = cdkScrollable.getElementRef().nativeElement.clientHeight;
             // scrollHeight === clientHeight + scrollTop
             // scrollHeight === sectionHeight (90vh) * sections.length  + .void_space (30vh)
             const scrollHeight = cdkScrollable.getElementRef().nativeElement.scrollHeight;
             const sectionHeight = clientHeight * this.sectionHeightScreenPercentage;
-            const voidSpaceHeight = clientHeight * this.voidSpaceHeightScreenPercentage;
-            const clientMiddlePoint = scrollTop + (clientHeight / 2);
-            const percentageToTranslateBackgrounTitle = Math.round(((clientMiddlePoint - voidSpaceHeight) / sectionHeight) * 1000) / 10;
+            const scrolledPercentage = Math.round((scrollTop / (scrollHeight - clientHeight)) * 1000) / 10 ;
+            const percentageToTranslateBackgrounTitle = scrolledPercentage * (this.sections.length - 1);
             this.titleBackgroundContainer.nativeElement.style.transform = `translateX(-${
                                                                             // Fix scroll throttle vagueness
                                                                             percentageToTranslateBackgrounTitle < -5 ?
@@ -66,8 +71,12 @@ export class HomeComponent implements OnInit, OnDestroy {
                                     0;
 
             if (this.activeSection !== currentSection) {
-              this.activeSection = currentSection;
-              this.changeDetectorRef.detectChanges();
+              // To avoid performance issues, ancestorScrolled is runOutsideAngular
+              // Here we call ngZone to trigger change detection and refresh views
+              this.ngZone.run(() => {
+                this.activeSection = currentSection;
+                this.menuService.setActiveSection(this.activeSection);
+              });
             }
           });
   }

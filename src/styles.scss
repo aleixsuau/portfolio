@@ -1,3 +1,4 @@
+@import "./variables";
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -44,6 +45,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
 }
 
 @font-face{

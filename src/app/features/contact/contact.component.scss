@@ -1,0 +1,15 @@
+@import "../../../variables";
+
+.contact {
+  &__input {
+    &:last-child {
+      margin-top: 3rem;
+    }
+
+    ::ng-deep .mat-form-field {
+      width: 100%;
+      font-size: 3rem;
+      color: $white;
+    }
+  }
+}

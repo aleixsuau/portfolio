@@ -1,0 +1,34 @@
+<section id="contact"
+         fxLayout="row wrap"
+         fxLayoutAlign="center end"
+         [formGroup]="contactForm">
+  <div class="contact__input"
+       fxFlex="1 1 55%">
+    <mat-form-field>
+      <input type="text"
+             placeholder="Email"
+             matInput
+             formControlName="email">
+
+      <mat-error *ngIf="contactForm.get('email').touched && contactForm.get('email').invalid">
+        Please introduce a correct email :)
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="contact__input"
+       fxFlex="1 1 55%">
+    <mat-form-field>
+      <textarea type="text"
+                placeholder="Message"
+                matInput
+                formControlName="message">
+      </textarea>
+
+      <mat-error *ngIf="contactForm.get('message').touched && contactForm.get('message').invalid">
+        Please drop me a line :)
+      </mat-error>
+    </mat-form-field>
+  </div>
+</section>
+

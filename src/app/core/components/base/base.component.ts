@@ -1,5 +1,6 @@
+import { MenuService } from './../../services/menu/menu.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-base',
@@ -7,14 +8,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./base.component.scss']
 })
 export class BaseComponent implements OnInit {
-  config: IAppConfig;
+  menu$: Observable<IMenu>;
+  activeSection$: Observable<IMenuSection>;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private menuService: MenuService,
   ) { }
 
   ngOnInit() {
-    this.config = this.activatedRoute.snapshot.data.config;
+    this.menu$ = this.menuService.menu$;
+    this.activeSection$ = this.menuService.activeSection$;
   }
-
 }

@@ -1,12 +1,15 @@
 interface IAppConfig {
-  menu: {
-    hasBackdrop: boolean;
-    mode: string;
-    sections: IMenuSection[];
-  };
+  menu: IMenu;
+}
+
+interface IMenu {
+  hasBackdrop: boolean;
+  mode: string;
+  sections: IMenuSection[];
 }
 
 interface IMenuSection {
+  id: string;
   title: string;
   link: string;
   icon: string;
