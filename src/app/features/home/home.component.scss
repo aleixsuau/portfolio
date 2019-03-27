@@ -22,6 +22,8 @@
 
 .title_background {
   position: fixed;
+  // Allow scroll on top of this element on Firefox
+  pointer-events: none;
   top: 0;
   height: 80vh;
   width: 100%;
