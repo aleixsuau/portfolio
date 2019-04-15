@@ -3,6 +3,7 @@
 mat-sidenav {
   clip-path: polygon(0px 0px, 100% 0px, 100% 47rem, 48% 183rem, 0% 205rem);
   background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
+  width: 18rem;
 }
 
 mat-sidenav-container {
