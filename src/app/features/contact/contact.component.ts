@@ -1,8 +1,9 @@
 import { MenuService } from './../../core/services/menu/menu.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-contact',
@@ -11,11 +12,12 @@ import { switchMap, map } from 'rxjs/operators';
 })
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
-  buttonColor$: any; // Observable<IMenuSection>;
+  buttonColor$: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private menuService: MenuService,
+    private httpClient: HttpClient,
   ) { }
 
   ngOnInit() {
@@ -42,7 +44,9 @@ export class ContactComponent implements OnInit {
   }
 
   sendMessage(message: IMessage) {
-    // TODO: Integrate with server
-    console.log('sendMessage', message);
+    // TODO: Show sent confirmation toast to the user
+    this.httpClient
+          .post('https://us-central1-portfolio-aleix.cloudfunctions.net/contactEmail', message)
+          .subscribe(response => console.log('SendEmail: ', response));
   }
 }

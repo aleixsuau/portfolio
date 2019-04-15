@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   sections: IMenuSection[];
   sectionsSubscription: Subscription;
   sectionHeightScreenPercentage = 0.9;
-  voidSpaceHeightScreenPercentage = 0.3;
+  voidSpaceHeightScreenPercentage = 0.5;
   activeSection: number;
 
   @ViewChild('homeBackgroundColor')

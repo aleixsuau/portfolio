@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MatSidenavModule, MatButtonModule, MatIconModule, MatListModule, MatCardModule, MatChipsModule, MatDialogModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FlexLayoutModule,
     MatSidenavModule,
     MatButtonModule,
@@ -30,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FlexLayoutModule,
     MatSidenavModule,
     MatButtonModule,

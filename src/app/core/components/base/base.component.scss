@@ -20,7 +20,7 @@ mat-sidenav-container {
 
   h2 {
     margin: 0;
-    color: $dark-grey;
+    color: $white;
     text-transform: uppercase;
     font-size: 3rem;
     position: absolute;
@@ -34,7 +34,6 @@ mat-sidenav-container {
     background-image: linear-gradient(to right bottom, $light-grey, $darker-grey);
     background-size: cover;
     background-position: top;
-    mask-image: radial-gradient(circle at 5rem 5rem, transparent 3rem, rgb(0, 0, 0) 3rem);
     clip-path: polygon(0 0, 100% 0, 100% 12rem, 0% 9rem);
     animation: fadeIn 0s ease-out 1.5s;
     animation-fill-mode: backwards;
@@ -42,10 +41,11 @@ mat-sidenav-container {
 }
 
 .menu_button {
-  position: fixed;
+  position: absolute;
   top: 2.7rem;
   left: 2.7rem;
   z-index: 10;
+  cursor: pointer;
 
   .mat-icon {
     font-size: 4.5rem;
@@ -53,25 +53,6 @@ mat-sidenav-container {
     width: 4.5rem;
     color: $white;
   }
-}
-
-.hole_border {
-  height: 6.2rem;
-  width: 6.2rem;
-  position: fixed;
-  z-index: 1;
-  top: 1.9rem;
-  left: 1.9rem;
-  border-radius: 50%;
-  border: 0.2rem solid #3f3f3f;
-  animation: fadeIn .1s ease-out 1.5s;
-  animation-fill-mode: backwards;
-  transition-duration: .4s;
-  transition-timing-function: cubic-bezier(.25,.8,.25,1);
-}
-
-.hole_border.open, .menu_button.open {
-  margin-left: 15.2rem;
 }
 
 @keyframes fadeIn {

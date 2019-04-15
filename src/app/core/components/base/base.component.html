@@ -11,6 +11,7 @@
                                               section.background_color : null">
           {{ section.icon }}
         </mat-icon>
+
         <h3 matLine [style.color]="section.id === (activeSection$ | async)?.id ?
                                     section.background_color : null">
           {{ section.title | uppercase }}
@@ -22,12 +23,12 @@
   <mat-sidenav-content>
     <div class="header"
         fxFlexLayout>
+      <!-- SECTION BACKGROUND TITLES -->
       <div class="header__background">
       </div>
 
       <div class="menu_button"
           (click)="sideMenu.toggle()"
-          [ngClass]="{'open': sideMenu.opened}"
           fxFlex="0 0 10rem">
         <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
         <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
@@ -35,8 +36,6 @@
 
       <h2 *ngIf="(activeSection$ | async)?.id !== 'home'">{{ (activeSection$ | async)?.title }}</h2>
     </div>
-
-    <div class="hole_border" [ngClass]="{'open': sideMenu.opened}"></div>
 
     <router-outlet></router-outlet>
   </mat-sidenav-content>

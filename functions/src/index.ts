@@ -1,16 +1,28 @@
+// firebase deploy --only functions
+// firebase functions:config:get
+
 import * as functions from 'firebase-functions';
 import * as nodemailer from 'nodemailer';
+// Typings error with 'import *...'
+const cors_express = require('cors-express');
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+const cors = cors_express({
+  origin: true,
+});
+
+export const contactEmail = functions.https.onRequest((req, res) => {
+  if (req.method === 'OPTIONS') { return cors(req, res, () => res.status(200).send())};
+
+  if (req.body.email && req.body.message) {
+    return _sendEmail('info@macrofonoestudio.es', `Aleix Portfolio >> message from: ${req.body.email}`, req.body.message)
+              .then(() => cors(req, res, () => res.status(200).send()))
+              .catch((err) => cors(req, res, () => res.status(500).send(err)));
+  } else {
+    return cors(req, res, () => res.status(500).send(`Email send failed :(`));
+  }
+});
 
 function _sendEmail(recipient: string, subject: string, text: string) {
-  console.log('Sending Email to:', recipient, subject, text);
-
   const mailTransport = nodemailer.createTransport({
       host: functions.config().smtp.host,
       port: 465,
@@ -29,9 +41,9 @@ function _sendEmail(recipient: string, subject: string, text: string) {
   }
 
   return mailTransport
-            .sendMail(mailOptions)
-            .then((result) => {
-                console.log('Email sent to:', recipient);
-                return result;
-            });
+          .sendMail(mailOptions)
+          .then((result: any) => {
+              console.log('Email sent to:', recipient);
+              return result;
+          });
 }

@@ -13,6 +13,10 @@
     </div>
   </div>
 
+  <div class="logo_top">
+    <img src="../../../assets/img/aleix_perfil_cartoon.svg">
+  </div>
+
   <!-- PROFILES SECTION -->
   <section fxLayout="column"
            fxLayoutAlign="end center"
@@ -28,16 +32,31 @@
          fxFlex="0 0 auto"
          fxLayout="row"
          fxLayoutAlign="space-between center">
-      <img src="../../../assets/img/linkedIn_logo.svg"
-           class="profile__logo">
-      <img src="../../../assets/img/github_logo.svg"
-           class="profile__logo">
-      <img src="../../../assets/img/code_logo.svg"
-           class="profile__logo">
-      <img src="../../../assets/img/medium_logo.svg"
-           class="profile__logo">
-      <img src="../../../assets/img/twitter_logo.svg"
-           class="profile__logo">
+      <a href="https://www.linkedin.com/in/aleix-suau"
+         target="_blank">
+        <img src="../../../assets/img/linkedIn_logo.svg"
+             class="profile__logo">
+      </a>
+      <a href="https://github.com/aleixsuau"
+         target="_blank">
+        <img src="../../../assets/img/github_logo.svg"
+             class="profile__logo">
+      </a>
+      <a href="https://stackblitz.com/@aleixsuau"
+         target="_blank">
+        <img src="../../../assets/img/code_logo.svg"
+             class="profile__logo">
+      </a>
+      <a href="https://medium.com/@aleixsuau"
+         target="_blank">
+        <img src="../../../assets/img/medium_logo.svg"
+             class="profile__logo">
+      </a>
+      <a href="https://twitter.com/aleixsuau"
+         target="_blank">
+        <img src="../../../assets/img/twitter_logo.svg"
+             class="profile__logo">
+      </a>
     </div>
   </section>
 
@@ -47,5 +66,12 @@
 
   <app-contact></app-contact>
 
-  <div [style.paddingBottom]="voidSpaceHeightScreenPercentage * 100 + 'vh'" class="void_space"></div>
+
+
+  <div [style.paddingBottom]="voidSpaceHeightScreenPercentage * 100 + 'vh'"
+       class="footer">
+    <div class="logo_bottom">
+        <img src="../../../assets/img/aleix_perfil_cartoon.svg">
+    </div>
+  </div>
 </div>
