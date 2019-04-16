@@ -1,28 +1,66 @@
 <mat-sidenav-container [hasBackdrop]="(menu$ | async)?.hasBackdrop"
                        CdkScrollable>
   <mat-sidenav #sideMenu
-               [mode]="(menu$ | async)?.mode">
-    <mat-nav-list>
+               [mode]="(menu$ | async)?.mode"
+               fxLayout="row wrap">
+    <mat-nav-list fxFlex="0 0 0"
+                  class="menu">
       <a mat-list-item
          *ngFor="let section of (menu$ | async)?.sections"
          [href]="'/#' + section.link"
          [ngClass]="{'active': section.id === (activeSection$ | async)?.id}">
         <mat-icon matListIcon [style.color]="section.id === (activeSection$ | async)?.id ?
-                                              section.background_color : null">
+                                              section.background_color : '#FFFFFF'">
           {{ section.icon }}
         </mat-icon>
 
-        <h3 matLine [style.color]="section.id === (activeSection$ | async)?.id ?
-                                    section.background_color : null">
+        <h2 matLine [style.color]="section.id === (activeSection$ | async)?.id ?
+                                    section.background_color : '#FFFFFF'">
           {{ section.title | uppercase }}
-        </h3>
+        </h2>
       </a>
     </mat-nav-list>
+
+    <div class="profile__logos_container"
+         fxLayout="column"
+         fxLayoutAlign="space-around center"
+         fxLayoutGap="2rem">
+      <a href="https://www.linkedin.com/in/aleix-suau"
+         target="_blank"
+         fxFlex="1 1 auto">
+        <img src="../../../assets/img/linkedIn_logo.svg"
+             class="profile__logo">
+      </a>
+      <a href="https://github.com/aleixsuau"
+         target="_blank"
+         fxFlex="1 1 auto">
+        <img src="../../../assets/img/github_logo.svg"
+             class="profile__logo">
+      </a>
+      <a href="https://stackblitz.com/@aleixsuau"
+         target="_blank"
+         fxFlex="1 1 auto">
+        <img src="../../../assets/img/code_logo.svg"
+             class="profile__logo">
+      </a>
+      <a href="https://medium.com/@aleixsuau"
+         target="_blank"
+         fxFlex="1 1 auto">
+        <img src="../../../assets/img/medium_logo.svg"
+             class="profile__logo">
+      </a>
+      <a href="https://twitter.com/aleixsuau"
+         target="_blank"
+         fxFlex="1 1 auto">
+        <img src="../../../assets/img/twitter_logo.svg"
+             class="profile__logo">
+      </a>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <div class="header"
-        fxFlexLayout>
+         fxFlexLayout>
       <!-- SECTION BACKGROUND TITLES -->
       <div class="header__background">
       </div>
@@ -34,7 +72,11 @@
         <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
       </div>
 
-      <h2 *ngIf="(activeSection$ | async)?.id !== 'home'">{{ (activeSection$ | async)?.title }}</h2>
+
+      <h2 *ngIf="(activeSection$ | async)?.id !== 'home'"
+          [@fadeIn]="(activeSection$ | async)?.id">
+          {{ (activeSection$ | async)?.title }}
+      </h2>
     </div>
 
     <router-outlet></router-outlet>

@@ -16,6 +16,7 @@ export class MenuService {
 
   loadMenu(menu: IMenu) {
     this._menu.next(menu);
+    this._activeSection.next(menu.sections[0]);
   }
 
   setActiveSection(sectionIndex: number) {
