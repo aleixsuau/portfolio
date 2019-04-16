@@ -10,10 +10,13 @@ import { trigger, transition, animate, style, useAnimation } from '@angular/anim
   styleUrls: ['./base.component.scss'],
   animations: [
     trigger('fadeIn', [
-      transition('* => *',
+      transition(':enter',
         useAnimation(fadeIn, { params: { time: '0.5s' }})
+      ),
+      transition(':leave',
+        animate('0.5s ease-in', style({opacity: 0})),
       )
-    ])
+    ]),
   ],
 })
 export class BaseComponent implements OnInit {
