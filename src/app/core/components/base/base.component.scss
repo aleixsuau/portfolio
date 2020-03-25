@@ -66,9 +66,8 @@ mat-sidenav-container {
 
 .profile {
   &__logos_container {
-    position: absolute;
-    top: 30vh;
-    width: 100%;
+    height: 20rem;
+    margin-top: 2rem;
   }
 
   &__logo {
@@ -89,6 +88,12 @@ mat-sidenav-container {
 
   100% {
     opacity: 1;
+  }
+}
+
+::ng-deep {
+  .mat-drawer-inner-container {
+    flex-wrap: wrap;
   }
 }
 
