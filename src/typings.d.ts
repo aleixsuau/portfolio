@@ -23,6 +23,10 @@ interface IWork {
   image: string;
   link: string;
   categories: IWorkCategory[];
+  illustration: {
+    author: string;
+    link: string;
+  };
 }
 
 interface IWorkCategory {

@@ -25,6 +25,13 @@
             <mat-icon>{{ category.icon }}</mat-icon>
           </mat-chip>
         </mat-chip-list>
+
+        <span class="ilustration_author"
+              *ngIf="work.illustration?.author">
+          <a [href]="work.illustration?.link">
+            Illustration by {{work.illustration?.author}}
+          </a>
+        </span>
       </mat-card-content>
     </mat-card>
   </div>
