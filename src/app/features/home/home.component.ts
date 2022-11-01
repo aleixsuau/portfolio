@@ -1,7 +1,7 @@
 import { MenuService } from './../../core/services/menu/menu.service';
 import { ConfigService } from './../../core/services/config/config.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, NgZone, AfterViewInit } from '@angular/core';
 import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/overlay';
 import { Subscription } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   works: IWork[];
   sections: IMenuSection[];
   sectionsSubscription: Subscription;
@@ -37,15 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.works = this.activatedRoute.snapshot.data.content;
-    this.sectionsSubscription = this.configService.$config.subscribe(config => this.sections = config.menu.sections);
-
-    // Set background height & color
-    const colors = this.sections.map(section => section.background_color).join(' ,');
-    this.homeBackgroundColor.nativeElement.style.backgroundImage = `linear-gradient(to bottom, ${colors})`;
-    this.homeBackgroundColor.nativeElement.style.height = `${((this.sections.length *
-                                                            this.sectionHeightScreenPercentage) +
-                                                            this.voidSpaceHeightScreenPercentage) *
-                                                            100}vh`;
+    this.sectionsSubscription = this.configService.$config.subscribe(config => this.sections = config.menu.sections);   
 
     this.scrollDispatcher
           .ancestorScrolled(this.elementRef, 50)
@@ -61,7 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             const scrollHeight = cdkScrollable.getElementRef().nativeElement.scrollHeight;
             const sectionHeight = clientHeight * this.sectionHeightScreenPercentage;
             const scrolledPercentage = Math.round((scrollTop / (scrollHeight - clientHeight)) * 1000) / 10 ;
-            const percentageToTranslateBackgrounTitle = scrolledPercentage * (this.sections.length - 1);
+            const percentageToTranslateBackgroundTitle = scrolledPercentage * (this.sections.length - 1);
             const lastSection = this.sections.length - 1;
             const currentSection = scrollTop > sectionHeight ?
                                     Math.floor(scrollTop / sectionHeight) :
@@ -69,9 +61,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
             this.titleBackgroundContainer.nativeElement.style.transform = `translateX(-${
                                                                             // Fix scroll throttle vagueness
-                                                                            percentageToTranslateBackgrounTitle < -5 ?
+                                                                            percentageToTranslateBackgroundTitle < -5 ?
                                                                               0 :
-                                                                              percentageToTranslateBackgrounTitle
+                                                                              percentageToTranslateBackgroundTitle
                                                                           }%)`;
 
             if (currentSection === lastSection) {
@@ -90,6 +82,17 @@ export class HomeComponent implements OnInit, OnDestroy {
               });
             }
           });
+  }
+
+  ngAfterViewInit(): void {
+    // Set background height & color
+    const colors = this.sections.map(section => section.background_color).join(' ,'); 
+    
+    this.homeBackgroundColor.nativeElement.style.backgroundImage = `linear-gradient(to bottom, ${colors})`;
+    this.homeBackgroundColor.nativeElement.style.height = `${((this.sections.length *
+      this.sectionHeightScreenPercentage) +
+      this.voidSpaceHeightScreenPercentage) *
+      100}vh`;
   }
 
   ngOnDestroy() {
