@@ -58,13 +58,11 @@
     </div>
   </section>
 
-  <app-portfolio [works]="works"></app-portfolio>
+  <app-section [collection]="posts" (itemClicked)="goToExternalUrl($event)"></app-section>
 
-  <app-blog></app-blog>
+  <app-section [collection]="works" (itemClicked)="openWorkInDialog($event)"></app-section>
 
   <app-contact></app-contact>
-
-
 
   <div [style.paddingBottom]="voidSpaceHeightScreenPercentage * 100 + 'vh'"
        class="footer">
@@ -73,3 +71,38 @@
     </div>
   </div>
 </div>
+
+<!-- CODE IFRAME TEMPLATE -->
+<ng-template #codeIframeTemplate>
+  <div class="dialog__header_container">
+    <button mat-fab color="primary" (click)="dialogRef.close()" class="dialog__close_button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div fxLayoutAlign="center center" class="dialog__spinner_container">
+    <mat-progress-spinner mode="indeterminate" color="accent" *ngIf="iframeLoading">
+    </mat-progress-spinner>
+  </div>
+
+  <div class="dialog__iframe_container">
+    <div class="dialog__curtain" *ngIf="iframeLoading">
+    </div>
+
+    <div class="dialog__iframe_wrapper" *ngIf="selectedWorkLink">
+      <iframe scrolling="no" frameborder="0" id="player" [src]="selectedWorkLink" allowfullscreen="true" width="100%"
+        height="100%">
+      </iframe>
+    </div>
+
+    <button mat-fab color="primary" (click)="openWorkInDialog(selectedWorkIndex - 1)"
+      [disabled]="selectedWorkIndex - 1 < 0" class="dialog__work_button--previous">
+      <mat-icon>arrow_left</mat-icon>
+    </button>
+
+    <button mat-fab color="primary" (click)="openWorkInDialog(selectedWorkIndex + 1)"
+      [disabled]="selectedWorkIndex + 1 >= works.length" class="dialog__work_button--next">
+      <mat-icon>arrow_right</mat-icon>
+    </button>
+  </div>
+</ng-template>

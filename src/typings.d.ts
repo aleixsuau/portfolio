@@ -16,20 +16,20 @@ interface IMenuSection {
   background_color: string;
 }
 
-interface IWork {
+interface ICollectionItem {
   id: string;
   title: string;
   description: string;
   image: string;
   link: string;
-  categories: IWorkCategory[];
+  categories: ICollectionCategory[];
   illustration: {
     author: string;
     link: string;
   };
 }
 
-interface IWorkCategory {
+interface ICollectionCategory {
   title: string;
   icon: string;
 }

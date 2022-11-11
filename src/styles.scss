@@ -33,6 +33,9 @@ $portfolio-theme: mat.define-light-theme((
 // that you are using.
 @include mat.core-theme($portfolio-theme);
 @include mat.button-theme($portfolio-theme);
+@include mat.progress-spinner-theme($portfolio-theme);
+@include mat.chips-theme($portfolio-theme);
+@include mat.icon-theme($portfolio-theme);
 
 /* You can add global styles to this file, and also import other style files */
 

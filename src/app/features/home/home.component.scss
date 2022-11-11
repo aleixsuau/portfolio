@@ -75,8 +75,70 @@
   }
 }
 
-::ng-deep section {
-  height: 90vh;
+.dialog {
+  &__spinner_container ::ng-deep mat-progress-spinner {
+    position: absolute;
+    top: calc(50% - 5rem);
+    z-index: 10;
+  }
+
+  &__header_container {
+    position: relative;
+  }
+
+  &__close_button {
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+    z-index: 1;
+  }
+
+  &__iframe_container {
+    height: 100%;
+    position: relative;
+  }
+
+  &__iframe_wrapper {
+    overflow: hidden;
+    border-radius: 0.4rem;
+    height: 100%;
+  }
+
+  &__curtain {
+    width: 100%;
+    height: 100%;
+    background-color: $primary;
+    position: absolute;
+  }
+
+  &__work_button--previous {
+    position: absolute;
+    top: calc(50% - 2em);
+    left: -4.5em;
+  }
+
+  &__work_button--next {
+    position: absolute;
+    top: calc(50% - 2em);
+    right: -4.5em;
+  }
+}
+
+::ng-deep {
+  section {
+    height: 90vh;
+  }
+
+  .dialog {
+    &__iframe {
+      width: 85vw;
+      height: 85vh;
+    }
+
+    &__iframe .mat-dialog-container {
+      padding: 0rem;
+    }
+  }
 }
 
 @keyframes appearFromTop {
@@ -112,4 +174,5 @@
     transform: translate(0);
   }
 }
+
 

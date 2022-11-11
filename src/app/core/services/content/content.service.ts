@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { of, Observable, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,18 @@ export class ContentService {
     private httpClient: HttpClient,
   ) { }
 
-  getWorks(): Observable<IWork[]> {
-    return this.httpClient.get<IWork[]>('https://portfolio-aleix.firebaseio.com/works.json');
+  getWorks(): Observable<ICollectionItem[]> {
+    return this.httpClient.get<ICollectionItem[]>('https://portfolio-aleix.firebaseio.com/works.json');
+  }
+
+  getPosts(): Observable<ICollectionItem[]> {
+    return this.httpClient.get<ICollectionItem[]>('https://portfolio-aleix.firebaseio.com/posts.json');
   }
 
   getAllContent() {
-    return this.getWorks();
+    return forkJoin({
+      works: this.getWorks(),
+      posts: this.getPosts(),
+    })
   }
 }

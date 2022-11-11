@@ -15,10 +15,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SectionComponent } from './ui/section/section.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SectionComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -54,6 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     ScrollingModule,
+    SectionComponent,
   ]
 })
 export class SharedModule { }
