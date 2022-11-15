@@ -106,10 +106,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       if (this.activeSection === lastSection) {
         this.homeBackgroundTitle.nativeElement.style.top = 0;
       }
-      // To avoid performance issues, ancestorScrolled is runOutsideAngular
-      // Here we call ngZone to trigger change detection and refresh views
+
       this.ngZone.run(() => {
         this.activeSection = currentSection;
+        
         this.menuService.setActiveSection(this.activeSection);
       });
     }

@@ -58,11 +58,11 @@
     </div>
   </section>
 
-  <app-section [collection]="posts" (itemClicked)="goToExternalUrl($event)"></app-section>
+  <app-section id="blog" [collection]="posts" (itemClicked)="goToExternalUrl($event)"></app-section>
 
-  <app-section [collection]="works" (itemClicked)="openWorkInDialog($event)"></app-section>
+  <app-section id="works" [collection]="works" (itemClicked)="openWorkInDialog($event)"></app-section>
 
-  <app-contact></app-contact>
+  <app-contact id="contact"></app-contact>
 
   <div [style.paddingBottom]="voidSpaceHeightScreenPercentage * 100 + 'vh'"
        class="footer">
