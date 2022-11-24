@@ -47,6 +47,6 @@ export class ContactComponent implements OnInit {
     // TODO: Show sent confirmation toast to the user
     this.httpClient
           .post('https://us-central1-portfolio-aleix.cloudfunctions.net/contactEmail', message)
-          .subscribe(response => console.log('SendEmail: ', response));
+          .subscribe();
   }
 }
