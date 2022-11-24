@@ -20,9 +20,10 @@
   <!-- PROFILES SECTION -->
   <section fxLayout="column"
            fxLayoutAlign="end center"
-           class="profile">
+           id="profile">
     <h3 fxFlex="0 0 auto"
-        class="hi">
+        class="hi"
+        data-test="profileGreeting">
       I'm Aleix, frontend developer
     </h3>
 
@@ -31,27 +32,32 @@
          fxLayout="row"
          fxLayoutAlign="space-between center">
       <a href="https://www.linkedin.com/in/aleix-suau"
-         target="_blank">
+         target="_blank"
+         data-test="profileLink">
         <img src="../../../assets/img/linkedIn_logo.svg"
              class="profile__logo">
       </a>
       <a href="https://github.com/aleixsuau"
-         target="_blank">
+         target="_blank"
+         data-test="profileLink">
         <img src="../../../assets/img/github_logo.svg"
              class="profile__logo">
       </a>
       <a href="https://stackblitz.com/@aleixsuau"
-         target="_blank">
+         target="_blank"
+         data-test="profileLink">
         <img src="../../../assets/img/code_logo.svg"
              class="profile__logo">
       </a>
       <a href="https://medium.com/@aleixsuau"
-         target="_blank">
+         target="_blank"
+         data-test="profileLink">
         <img src="../../../assets/img/medium_logo.svg"
              class="profile__logo">
       </a>
       <a href="https://twitter.com/aleixsuau"
-         target="_blank">
+         target="_blank"
+         data-test="profileLink">
         <img src="../../../assets/img/twitter_logo.svg"
              class="profile__logo">
       </a>
@@ -74,8 +80,8 @@
 
 <!-- CODE IFRAME TEMPLATE -->
 <ng-template #codeIframeTemplate>
-  <div class="dialog__header_container">
-    <button mat-fab color="primary" (click)="dialogRef.close()" class="dialog__close_button">
+  <div class="dialog__header_container" data-test="dialogIframeContainer">
+    <button mat-fab color="primary" (click)="dialogRef.close()" class="dialog__close_button" data-test="dialogCloseButton">
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -91,7 +97,7 @@
 
     <div class="dialog__iframe_wrapper" *ngIf="selectedWorkLink">
       <iframe scrolling="no" frameborder="0" id="player" [src]="selectedWorkLink" allowfullscreen="true" width="100%"
-        height="100%">
+        height="100%" data-test="dialogIframe">
       </iframe>
     </div>
 

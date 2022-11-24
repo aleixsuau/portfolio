@@ -1,15 +1,19 @@
 <section fxLayout="row wrap"
          fxLayoutAlign="center end"
-         [formGroup]="contactForm">
+         [formGroup]="contactForm"
+         data-test="contactForm">
   <div class="contact__input"
        fxFlex="1 1 55%">
     <mat-form-field>
       <input type="text"
              placeholder="Email"
              matInput
-             formControlName="email">
+             formControlName="email"
+             data-test="emailInput">
 
-      <mat-error *ngIf="contactForm.get('email').touched && contactForm.get('email').invalid">
+      <mat-error 
+        *ngIf="contactForm.get('email').touched && contactForm.get('email').invalid"
+        data-test="emailInputError">
         Please introduce a correct email :)
       </mat-error>
     </mat-form-field>
@@ -21,10 +25,13 @@
       <textarea type="text"
                 placeholder="Message"
                 matInput
-                formControlName="message">
+                formControlName="message"
+                data-test="messageInput">
       </textarea>
 
-      <mat-error *ngIf="contactForm.get('message').touched && contactForm.get('message').invalid">
+      <mat-error
+        *ngIf="contactForm.get('message').touched && contactForm.get('message').invalid"
+        data-test="messageInputError">
         Please drop me a line :)
       </mat-error>
     </mat-form-field>
@@ -36,7 +43,8 @@
     <button mat-fab
             (click)="sendMessage(contactForm.value);"
             [disabled]="contactForm.invalid"
-            [style.backgroundColor]="contactForm.valid ? (buttonColor$ | async) : null">
+            [style.backgroundColor]="contactForm.valid ? (buttonColor$ | async) : null"
+            data-test="submitButton">
       <mat-icon class="mat-18">send</mat-icon>
     </button>
   </div>

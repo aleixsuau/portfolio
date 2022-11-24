@@ -3,13 +3,15 @@
     <h3>{{ collection?.length }}</h3>
   </div>
 
-  <div class="portfolio_container"
+  <div class="gallery_container"
        fxLayout="row"
        fxLayoutAlign="start end"
-       fxLayoutGap="2em">
+       fxLayoutGap="2em"
+       data-test="galleryContainer">
     <mat-card *ngFor="let item of collection; let index = index;"
               (click)="emitItemClicked(index);"
-              fxFlex="1 1 30rem">
+              fxFlex="1 1 30rem"
+              data-test="galleryCard">
       <img matCardImage [src]="item.image">
 
       <mat-card-content fxLayout="column"

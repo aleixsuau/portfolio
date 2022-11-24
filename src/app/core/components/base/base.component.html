@@ -3,20 +3,25 @@
   <mat-sidenav #sideMenu
                [mode]="(menu$ | async)?.mode"
                fxLayout="row wrap"
-               fxLayoutAlign="start start">
+               fxLayoutAlign="start start"
+               data-test="menu">
     <mat-nav-list fxFlex="0 0 0"
                   class="menu">
       <a mat-list-item
          *ngFor="let section of (menu$ | async)?.sections"
          [href]="'/#' + section.link"
-         [ngClass]="{'active': section.id === (activeSection$ | async)?.id}">
+         [ngClass]="{'active': section.id === (activeSection$ | async)?.id}"
+         data-test="menuItem">
         <mat-icon matListIcon [style.color]="section.id === (activeSection$ | async)?.id ?
                                               section.background_color : '#FFFFFF'">
           {{ section.icon }}
         </mat-icon>
 
-        <h2 matLine [style.color]="section.id === (activeSection$ | async)?.id ?
-                                    section.background_color : '#FFFFFF'">
+        <h2 
+          matLine
+          [style.color]="section.id === (activeSection$ | async)?.id ?
+                                    section.background_color : '#FFFFFF'"
+          data-test="menuItemTitle">
           {{ section.title | uppercase }}
         </h2>
       </a>
@@ -69,14 +74,16 @@
 
       <div class="menu_button"
           (click)="sideMenu.toggle()"
-          fxFlex="0 0 10rem">
+          fxFlex="0 0 10rem"
+          data-test="menuToggle">
         <mat-icon *ngIf="!sideMenu.opened">menu</mat-icon>
         <mat-icon *ngIf="sideMenu.opened">close</mat-icon>
       </div>
 
 
       <h2 *ngIf="(activeSection$ | async)?.id !== 'home'"
-          [@fadeIn]="(activeSection$ | async)?.id">
+          [@fadeIn]="(activeSection$ | async)?.id"
+          data-test="menuTitle">
           {{ (activeSection$ | async)?.title }}
       </h2>
     </div>
